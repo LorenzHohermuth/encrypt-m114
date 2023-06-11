@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.CheckBox?>
-
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ch.bbw.encryptm114.Controller">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.encryptm114.Controller">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <TextField fx:id="input"/>
-    <CheckBox text="salt" fx:id="salt"/>
-    <CheckBox text="pepper" fx:id="pepper"/>
-    <Button text="Encrypt" onAction="#onHelloButtonClick"/>
-    <Label fx:id="outText" style="-fx-background-color: rgba(204,204,204,0.8)" prefHeight="304.0" prefWidth="374.0"/>
+    <TextField fx:id="input" />
+   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="257.0">
+      <children>
+          <CheckBox fx:id="salt" style="-fx-padding: 5;" text="salt" />
+          <CheckBox fx:id="pepper" style="-fx-padding: 5;" text="pepper" />
+      </children>
+   </HBox>
+    <Button onAction="#onHelloButtonClick" text="Encrypt" />
+    <Label fx:id="outText" alignment="TOP_LEFT" prefHeight="304.0" prefWidth="374.0" style="-fx-background-color: rgba(204,204,204,0.8); -fx-padding: 15;" textOverrun="CLIP" wrapText="true" />
 
 </VBox>

@@ -18,6 +18,6 @@ public class Controller {
 
     @FXML
     protected void onHelloButtonClick() {
-        outText.setText(String.valueOf(salt.isSelected()));
+        outText.setText(input.getText());
     }
 }
