@@ -17,7 +17,7 @@ public class Controller {
     private Label outText;
 
     @FXML
-    protected void handleEncrypt() {
+    protected void handleEncrypt() { //behandelt sachä wenn de button druckt wird
         String message = input.getText();
         if (message.equals("")) {
             return;
@@ -29,15 +29,15 @@ public class Controller {
             message = getSalt() + message;
         }
         if (pepper.isSelected()) {
-            message = message + getSalt(); //salt identifies as Pepper
+            message = message + getSalt(); //das salt isch jz eifach churz än pepper
         }
         if (hash.isSelected()) {
             message = hashMessage(message);
         }
-        outText.setText(message);
+        outText.setText(message); //setzt de text uf äm label mit id outText uf t message
     }
 
-    String XOREncrypt(String text) {
+    String XOREncrypt(String text) { //fuärt xor verschlüsslig us
         String binText = toBinaryString(text);
         String binKey = generateKey(binText.length());
         String encryptedText = XORString(binText, binKey, binText.length());
@@ -45,7 +45,7 @@ public class Controller {
         return out;
     }
 
-    String hashMessage(String text) {
+    String hashMessage(String text) { // hashted än string
         String binText1 = toBinaryString(text);
         String binText2 = flipString(binText1);
         String XORBinText = XORString(binText1, binText2, binText2.length());
@@ -53,13 +53,13 @@ public class Controller {
         return out;
     }
 
-    String getSalt() {
+    String getSalt() { //erstellt ä random 3 zeichen langä string
         String binSalt = generateRandomBin(3*8);
         String out = binaryToText(binSalt);
         return out;
     }
 
-    String toBinaryString(String textIn) {
+    String toBinaryString(String textIn) { //vo text zu binärä string
         StringBuilder sb = new StringBuilder();
         char[] charText = textIn.toCharArray();
         for (char character : charText) {
@@ -71,7 +71,7 @@ public class Controller {
         return sb.toString();
     }
 
-    String flipString(String text) {
+    String flipString(String text) { //trült än string um
         String out = "";
         char[] charText = text.toCharArray();
         for(char character : charText) {
@@ -80,7 +80,7 @@ public class Controller {
         return out;
     }
 
-    String XORString(String text1, String text2 , int length ) {
+    String XORString(String text1, String text2 , int length ) { //macht xor operation uf zwei binäri strings
         String out = "";
         for (int i = 0 ; i < length ; i++) {
             if(text1.charAt(i) == text2.charAt(i)) {
@@ -94,7 +94,7 @@ public class Controller {
     }
 
 
-    String binaryToText(String binText) {
+    String binaryToText(String binText) { //vo binär zu text
         String out = "";
         String[] byteArr = splitInPairsOf(binText, 8);
         for (String byteText: byteArr ) {
@@ -105,16 +105,16 @@ public class Controller {
         return out;
     }
 
-    String[] splitInPairsOf(String text, int n) {
+    String[] splitInPairsOf(String text, int n) { // splität in paar vo n
         String[] results = text.split("(?<=\\G.{" + n + "})");
         return results;
     }
 
     String generateKey(int length) {
         return generateRandomBin(length);
-    }
+    } // generiert än key für xor verslüsslig
 
-    String generateRandomBin(int length) {
+    String generateRandomBin(int length) { //generiert än random binärä zeichächeti
         String out = "";
         Random rand = new Random();
         for (int i = 0; i < length; i++) {
