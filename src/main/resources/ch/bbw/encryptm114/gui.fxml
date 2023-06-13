@@ -18,10 +18,10 @@
     <TextField fx:id="input" />
    <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="300.0" spacing="15.0">
       <children>
-          <CheckBox style="-fx-padding: 5;" text="XOR" fx:id="xor" />
-          <CheckBox fx:id="hash" style="-fx-padding: 5;" text="hash" />
-          <CheckBox fx:id="salt" style="-fx-padding: 5;" text="salt" />
-          <CheckBox fx:id="pepper" style="-fx-padding: 5;" text="pepper" />
+          <CheckBox  text="XOR" fx:id="xor" />
+          <CheckBox fx:id="hash"  text="hash" />
+          <CheckBox fx:id="salt"  text="salt" />
+          <CheckBox fx:id="pepper"  text="pepper" />
       </children>
    </HBox>
    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="374.0" spacing="8.0">
@@ -31,6 +31,6 @@
           <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#toggleDarkMode" text="Dark Mode" />
       </children>
    </HBox>
-    <Label fx:id="outText" alignment="TOP_LEFT" prefHeight="304.0" prefWidth="374.0" style="-fx-background-color: rgba(204,204,204,0.8); -fx-padding: 15;" textOverrun="CLIP" wrapText="true" />
+    <Label fx:id="outText" alignment="TOP_LEFT" prefHeight="304.0" prefWidth="374.0" style="-fx-background-color: #CCCCCCCC; -fx-padding: 15;" textOverrun="CLIP" wrapText="true" />
 
 </VBox>

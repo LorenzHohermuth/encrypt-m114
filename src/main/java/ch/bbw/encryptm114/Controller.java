@@ -40,6 +40,7 @@ public class Controller {
         outText.setText(message); //setzt de text uf äm label mit id outText uf t message
     }
 
+    //XD
     @FXML
     protected void handleDecrypt() {
         String message = input.getText();
@@ -151,6 +152,7 @@ public class Controller {
             pepper.setStyle("-fx-text-fill: white;");
             input.setStyle("-fx-background-color: #a9a9a9;");
             outText.setStyle("-fx-background-color: #5c5c5c; -fx-text-fill: white; -fx-padding: 15;");
+            darkModeToggle.setText("Light Mode");
 
         } else {
             root.setStyle("");
@@ -159,7 +161,8 @@ public class Controller {
             salt.setStyle("");
             pepper.setStyle("");
             input.setStyle("");
-            outText.setStyle("-fx-background-color: rgba(204,204,204,0.8); -fx-padding: 15;");
+            outText.setStyle("-fx-background-color: #CCCCCCCC; -fx-padding: 15;");
+            darkModeToggle.setText("Dark Mode");
         }
     }
 
