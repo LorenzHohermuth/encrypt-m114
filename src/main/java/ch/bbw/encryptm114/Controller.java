@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.VBox;
+
 import java.util.Random;
 
 public class Controller {
@@ -35,6 +38,12 @@ public class Controller {
             message = hashMessage(message);
         }
         outText.setText(message); //setzt de text uf äm label mit id outText uf t message
+    }
+
+    @FXML
+    protected void handleDecrypt() {
+        String message = input.getText();
+        outText.setText(message);
     }
 
     String XOREncrypt(String text) { //fuärt xor verschlüsslig us
@@ -123,4 +132,35 @@ public class Controller {
         }
         return out;
     }
+
+    @FXML
+    private ToggleButton darkModeToggle;
+
+    @FXML
+    private VBox root;
+
+    @FXML
+    private void toggleDarkMode() {
+        boolean darkModeEnabled = darkModeToggle.isSelected();
+
+        if (darkModeEnabled) {
+            root.setStyle("-fx-background-color: #202020;");
+            xor.setStyle("-fx-text-fill: white;");
+            hash.setStyle("-fx-text-fill: white;");
+            salt.setStyle("-fx-text-fill: white;");
+            pepper.setStyle("-fx-text-fill: white;");
+            input.setStyle("-fx-background-color: #a9a9a9;");
+            outText.setStyle("-fx-background-color: #5c5c5c; -fx-text-fill: white; -fx-padding: 15;");
+
+        } else {
+            root.setStyle("");
+            xor.setStyle("");
+            hash.setStyle("");
+            salt.setStyle("");
+            pepper.setStyle("");
+            input.setStyle("");
+            outText.setStyle("-fx-background-color: rgba(204,204,204,0.8); -fx-padding: 15;");
+        }
+    }
+
 }
