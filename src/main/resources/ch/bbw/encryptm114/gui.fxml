@@ -5,16 +5,18 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.encryptm114.Controller">
+<?import javafx.scene.control.TextArea?>
+<VBox fx:id="root" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.encryptm114.Controller">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <TextField fx:id="input" />
-   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="257.0">
+   <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="300.0" spacing="15.0">
       <children>
           <CheckBox style="-fx-padding: 5;" text="XOR" fx:id="xor" />
           <CheckBox fx:id="hash" style="-fx-padding: 5;" text="hash" />
@@ -26,6 +28,7 @@
       <children>
           <Button minWidth="-Infinity" onAction="#handleEncrypt" prefHeight="25.0" prefWidth="90.0" text="Encrypt" />
          <Button minWidth="-Infinity" onAction="#handleDecrypt" prefHeight="25.0" prefWidth="90.0" text="Decrypt" />
+          <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#toggleDarkMode" text="Dark Mode" />
       </children>
    </HBox>
     <Label fx:id="outText" alignment="TOP_LEFT" prefHeight="304.0" prefWidth="374.0" style="-fx-background-color: rgba(204,204,204,0.8); -fx-padding: 15;" textOverrun="CLIP" wrapText="true" />
