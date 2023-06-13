@@ -37,6 +37,12 @@ public class Controller {
         outText.setText(message);
     }
 
+    @FXML
+    protected void handleDecrypt() {
+        String message = input.getText();
+        outText.setText(message);
+    }
+
     String XOREncrypt(String text) {
         String binText = toBinaryString(text);
         String binKey = generateKey(binText.length());
