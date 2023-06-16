@@ -17,16 +17,16 @@
     <TextField fx:id="input" stylesheets="@style.css" />
    <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="300.0" spacing="15.0" stylesheets="@style.css">
       <children>
-          <CheckBox fx:id="xor" stylesheets="@style.css" text="XOR" />
-          <CheckBox fx:id="hash" stylesheets="@style.css" text="hash" />
-          <CheckBox fx:id="salt" stylesheets="@style.css" text="salt" />
-          <CheckBox fx:id="pepper" stylesheets="@style.css" text="pepper" />
+          <CheckBox fx:id="xor" stylesheets="@style.css" text="XOR" onAction="#handleCheckBox" />
+          <CheckBox fx:id="hash" stylesheets="@style.css" text="hash" onAction="#handleCheckBox" />
+          <CheckBox fx:id="salt" stylesheets="@style.css" text="salt" onAction="#handleCheckBox" />
+          <CheckBox fx:id="pepper" stylesheets="@style.css" text="pepper" onAction="#handleCheckBox" />
       </children>
    </HBox>
    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="374.0" spacing="8.0" stylesheets="@style.css">
       <children>
           <Button minWidth="-Infinity" onAction="#handleEncrypt" prefHeight="25.0" prefWidth="90.0" stylesheets="@style.css" text="Encrypt" />
-         <Button minWidth="-Infinity" onAction="#handleDecrypt" prefHeight="25.0" prefWidth="90.0" stylesheets="@style.css" text="Decrypt" />
+         <Button fx:id="decryptBox" minWidth="-Infinity" onAction="#handleDecrypt" prefHeight="25.0" prefWidth="90.0" stylesheets="@style.css" text="Decrypt"  />
           <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#toggleDarkMode" stylesheets="@style.css" text="Dark Mode" />
       </children>
    </HBox>

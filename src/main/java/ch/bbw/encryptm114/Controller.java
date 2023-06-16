@@ -1,10 +1,7 @@
 package ch.bbw.encryptm114;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.util.Random;
@@ -14,12 +11,16 @@ public class Controller {
     String xorKey = "";
 
     public TextField input;
+
+    public Button decryptBox;
     public CheckBox salt;
     public CheckBox pepper;
     public CheckBox hash;
     public CheckBox xor;
     @FXML
     private Label outText;
+
+    boolean canDecrypte = false;
 
     @FXML
     protected void handleEncrypt() { //behandelt sachä wenn de button druckt wird
@@ -35,16 +36,18 @@ public class Controller {
         }
         if (xor.isSelected()) {
             message = XOREncrypt(message);
+            canDecrypte = true;
         }
         if (hash.isSelected()) {
             message = hashMessage(message);
         }
         outText.setText(message); //setzt de text uf äm label mit id outText uf t message
+        setStateDecrypt();
     }
 
     @FXML
     protected void handleDecrypt() {
-        if(xor.isSelected()) {
+        if(canDecrypte && outText.getText() != "") {
             String encryptedMessageBin = toBinaryString(outText.getText());
             String decryptedMessageBin = XORString(encryptedMessageBin, xorKey, encryptedMessageBin.length());
             String decryptedMessage = binaryToText(decryptedMessageBin);
@@ -170,6 +173,28 @@ public class Controller {
             outText.setStyle("-fx-background-color: #CCCCCCCC; -fx-padding: 15;");
             darkModeToggle.setText("Dark Mode");
         }
+    }
+    void setStateDecrypt() {
+        if (!canDecrypte){
+            decryptButtonGray();
+        }
+        else {
+            decryptButtonWhite();
+        }
+    }
+
+    void decryptButtonGray() {
+        decryptBox.setStyle("-fx-background-color: #bbb");
+    }
+
+    void decryptButtonWhite() {
+        decryptBox.setStyle("-fx-background-color: #ddd");
+    }
+
+    @FXML
+    void handleCheckBox() {
+        canDecrypte = false;
+        setStateDecrypt();
     }
 
 }
