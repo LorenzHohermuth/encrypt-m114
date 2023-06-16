@@ -11,6 +11,8 @@ import java.util.Random;
 
 public class Controller {
 
+    String xorKey = "";
+
     public TextField input;
     public CheckBox salt;
     public CheckBox pepper;
@@ -25,14 +27,14 @@ public class Controller {
         if (message.equals("")) {
             return;
         }
-        if (xor.isSelected()) {
-            message = XOREncrypt(message);
-        }
         if (salt.isSelected()) {
             message = getSalt() + message;
         }
         if (pepper.isSelected()) {
             message = message + getSalt(); //das salt isch jz eifach churz än pepper
+        }
+        if (xor.isSelected()) {
+            message = XOREncrypt(message);
         }
         if (hash.isSelected()) {
             message = hashMessage(message);
@@ -40,16 +42,20 @@ public class Controller {
         outText.setText(message); //setzt de text uf äm label mit id outText uf t message
     }
 
-    //XD
     @FXML
     protected void handleDecrypt() {
-        String message = input.getText();
-        outText.setText(message);
+        if(xor.isSelected()) {
+            String encryptedMessageBin = toBinaryString(outText.getText());
+            String decryptedMessageBin = XORString(encryptedMessageBin, xorKey, encryptedMessageBin.length());
+            String decryptedMessage = binaryToText(decryptedMessageBin);
+            outText.setText(decryptedMessage);
+        }
     }
 
     String XOREncrypt(String text) { //fuärt xor verschlüsslig us
         String binText = toBinaryString(text);
         String binKey = generateKey(binText.length());
+        xorKey = binKey;
         String encryptedText = XORString(binText, binKey, binText.length());
         String out = binaryToText(encryptedText);
         return out;
