@@ -17,6 +17,7 @@ public class Controller {
     public CheckBox pepper;
     public CheckBox hash;
     public CheckBox xor;
+    public CheckBox caesar;
     @FXML
     private Label outText;
 
@@ -36,6 +37,10 @@ public class Controller {
         }
         if (xor.isSelected()) {
             message = XOREncrypt(message);
+            canDecrypte = true;
+        }
+        if (caesar.isSelected()) {
+            message = caesar(message, 3);
             canDecrypte = true;
         }
         if (hash.isSelected()) {
@@ -63,6 +68,17 @@ public class Controller {
         String out = binaryToText(encryptedText);
         return out;
     }
+
+    String caesar(String text, int amountRotation) {
+        String[] arrText = text.split("");
+        for (String g : arrText) {
+            char character = g.charAt(0);
+            character += amountRotation;
+        }
+
+        }
+    }
+
 
     String hashMessage(String text) { // hashted än string
         String binText1 = toBinaryString(text);

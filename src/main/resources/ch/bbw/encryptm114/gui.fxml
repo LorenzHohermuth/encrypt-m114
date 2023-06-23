@@ -21,6 +21,7 @@
           <CheckBox fx:id="hash" stylesheets="@style.css" text="hash" onAction="#handleCheckBox" />
           <CheckBox fx:id="salt" stylesheets="@style.css" text="salt" onAction="#handleCheckBox" />
           <CheckBox fx:id="pepper" stylesheets="@style.css" text="pepper" onAction="#handleCheckBox" />
+          <CheckBox fx:id="caesar" stylesheets="@style.css" text="caesar" onAction="#handleCheckBox" />
       </children>
    </HBox>
    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="374.0" spacing="8.0" stylesheets="@style.css">
@@ -31,5 +32,4 @@
       </children>
    </HBox>
     <Label fx:id="outText" alignment="TOP_LEFT" prefHeight="304.0" prefWidth="374.0" stylesheets="@style.css" textOverrun="CLIP" wrapText="true" />
-
 </VBox>
