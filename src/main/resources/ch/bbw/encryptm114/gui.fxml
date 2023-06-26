@@ -6,10 +6,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" alignment="CENTER" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.encryptm114.Controller">
+<VBox fx:id="root" alignment="CENTER" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.encryptm114.Controller">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -17,19 +19,24 @@
     <TextField fx:id="input" stylesheets="@style.css" />
    <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="300.0" spacing="15.0" stylesheets="@style.css">
       <children>
-          <CheckBox fx:id="xor" stylesheets="@style.css" text="XOR" onAction="#handleCheckBox" />
-          <CheckBox fx:id="hash" stylesheets="@style.css" text="hash" onAction="#handleCheckBox" />
-          <CheckBox fx:id="salt" stylesheets="@style.css" text="salt" onAction="#handleCheckBox" />
-          <CheckBox fx:id="pepper" stylesheets="@style.css" text="pepper" onAction="#handleCheckBox" />
-          <CheckBox fx:id="caesar" stylesheets="@style.css" text="caesar" onAction="#handleCheckBox" />
+          <CheckBox onAction="#handleCheckBox" stylesheets="@style.css" text="XOR" fx:id="xor" />
+          <CheckBox fx:id="hash" onAction="#handleCheckBox" stylesheets="@style.css" text="hash" />
+          <CheckBox fx:id="salt" onAction="#handleCheckBox" stylesheets="@style.css" text="salt" />
+          <CheckBox fx:id="pepper" onAction="#handleCheckBox" stylesheets="@style.css" text="pepper" />
+          <CheckBox fx:id="caesar" onAction="#handleCheckBox" stylesheets="@style.css" text="caesar" />
       </children>
    </HBox>
    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="374.0" spacing="8.0" stylesheets="@style.css">
       <children>
           <Button minWidth="-Infinity" onAction="#handleEncrypt" prefHeight="25.0" prefWidth="90.0" stylesheets="@style.css" text="Encrypt" />
-         <Button fx:id="decryptBox" minWidth="-Infinity" onAction="#handleDecrypt" prefHeight="25.0" prefWidth="90.0" stylesheets="@style.css" text="Decrypt"  />
+         <Button fx:id="decryptBox" minWidth="-Infinity" onAction="#handleDecrypt" prefHeight="25.0" prefWidth="90.0" stylesheets="@style.css" text="Decrypt" />
           <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#toggleDarkMode" stylesheets="@style.css" text="Dark Mode" />
       </children>
    </HBox>
     <Label fx:id="outText" alignment="TOP_LEFT" prefHeight="304.0" prefWidth="374.0" stylesheets="@style.css" textOverrun="CLIP" wrapText="true" />
+   <ImageView fitHeight="231.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/Agent.png" />
+      </image>
+   </ImageView>
 </VBox>

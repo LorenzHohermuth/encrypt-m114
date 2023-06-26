@@ -39,10 +39,6 @@ public class Controller {
             message = XOREncrypt(message);
             canDecrypte = true;
         }
-        if (caesar.isSelected()) {
-            message = caesar(message, 3);
-            canDecrypte = true;
-        }
         if (hash.isSelected()) {
             message = hashMessage(message);
         }
@@ -69,15 +65,6 @@ public class Controller {
         return out;
     }
 
-    String caesar(String text, int amountRotation) {
-        String[] arrText = text.split("");
-        for (String g : arrText) {
-            char character = g.charAt(0);
-            character += amountRotation;
-        }
-
-        }
-    }
 
 
     String hashMessage(String text) { // hashted än string
@@ -175,6 +162,7 @@ public class Controller {
             hash.setStyle("-fx-text-fill: white;");
             salt.setStyle("-fx-text-fill: white;");
             pepper.setStyle("-fx-text-fill: white;");
+            caesar.setStyle("-fx-text-fill: white;");
             input.setStyle("-fx-background-color: #a9a9a9;");
             outText.setStyle("-fx-background-color: #5c5c5c; -fx-text-fill: white; -fx-padding: 15;");
             darkModeToggle.setText("Light Mode");
@@ -185,6 +173,7 @@ public class Controller {
             hash.setStyle("");
             salt.setStyle("");
             pepper.setStyle("");
+            caesar.setStyle("");
             input.setStyle("");
             outText.setStyle("-fx-background-color: #CCCCCCCC; -fx-padding: 15;");
             darkModeToggle.setText("Dark Mode");
