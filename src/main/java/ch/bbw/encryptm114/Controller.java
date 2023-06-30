@@ -1,8 +1,12 @@
 package ch.bbw.encryptm114;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.Random;
 
@@ -10,6 +14,7 @@ public class Controller {
 
     String xorKey = "";
 
+    int caesarKey = 0;
     public TextField input;
 
     public Button decryptBox;
@@ -35,6 +40,10 @@ public class Controller {
         if (pepper.isSelected()) {
             message = message + getSalt(); //das salt isch jz eifach churz än pepper
         }
+        if (caesar.isSelected()) {
+            message = caesar(message, 3);
+            canDecrypte = true;
+        }
         if (xor.isSelected()) {
             message = XOREncrypt(message);
             canDecrypte = true;
@@ -45,14 +54,27 @@ public class Controller {
         outText.setText(message); //setzt de text uf äm label mit id outText uf t message
         setStateDecrypt();
     }
+    public void start(Stage stage) {
+        StackPane root = new StackPane();
+        // set icon
+        stage.getIcons().add(new Image("@images/chatting.png"));
+        stage.setTitle("Wow!! Stackoverflow Icon");
+        stage.setScene(new Scene(root, 300, 250));
+        stage.show();
+    }
 
     @FXML
     protected void handleDecrypt() {
-        if(canDecrypte && outText.getText() != "") {
+        if(canDecrypte && xor.isSelected() && outText.getText() != "") {
             String encryptedMessageBin = toBinaryString(outText.getText());
             String decryptedMessageBin = XORString(encryptedMessageBin, xorKey, encryptedMessageBin.length());
             String decryptedMessage = binaryToText(decryptedMessageBin);
             outText.setText(decryptedMessage);
+        }
+        if(canDecrypte && caesar.isSelected() && outText.getText() != "") {
+            String encryptedText = outText.getText();
+            String decryptedText = caesar(encryptedText, caesarKey * -1);
+            outText.setText(decryptedText);
         }
     }
 
@@ -65,7 +87,19 @@ public class Controller {
         return out;
     }
 
-
+    String caesar(String text, int amountRotation) {
+        caesarKey = amountRotation;
+        String[] arrText = text.split("");
+        String caesarEncrypted = "";
+        for (int i = 0; i < arrText.length; i++) {
+            String g = arrText[i];
+            char character = g.charAt(0);
+            character += amountRotation;
+            String out = Character.toString(character);
+            caesarEncrypted += out;
+        }
+        return caesarEncrypted;
+    }
 
     String hashMessage(String text) { // hashted än string
         String binText1 = toBinaryString(text);
@@ -104,8 +138,10 @@ public class Controller {
 
     String XORString(String text1, String text2 , int length ) { //macht xor operation uf zwei binäri strings
         String out = "";
+        String[] arrText1 = text1.split("");
+        String[] arrText2 = text2.split("");
         for (int i = 0 ; i < length ; i++) {
-            if(text1.charAt(i) == text2.charAt(i)) {
+            if(arrText1[i].equals(arrText2[i])) {
                 out += "1";
             }
             else {
@@ -152,6 +188,7 @@ public class Controller {
     @FXML
     private VBox root;
 
+
     @FXML
     private void toggleDarkMode() {
         boolean darkModeEnabled = darkModeToggle.isSelected();
@@ -175,6 +212,7 @@ public class Controller {
             pepper.setStyle("");
             caesar.setStyle("");
             input.setStyle("");
+            caesar.setStyle("");
             outText.setStyle("-fx-background-color: #CCCCCCCC; -fx-padding: 15;");
             darkModeToggle.setText("Dark Mode");
         }

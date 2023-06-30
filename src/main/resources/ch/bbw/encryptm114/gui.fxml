@@ -19,7 +19,7 @@
     <TextField fx:id="input" stylesheets="@style.css" />
    <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="300.0" spacing="15.0" stylesheets="@style.css">
       <children>
-          <CheckBox onAction="#handleCheckBox" stylesheets="@style.css" text="XOR" fx:id="xor" />
+          <CheckBox fx:id="xor" onAction="#handleCheckBox" stylesheets="@style.css" text="XOR" />
           <CheckBox fx:id="hash" onAction="#handleCheckBox" stylesheets="@style.css" text="hash" />
           <CheckBox fx:id="salt" onAction="#handleCheckBox" stylesheets="@style.css" text="salt" />
           <CheckBox fx:id="pepper" onAction="#handleCheckBox" stylesheets="@style.css" text="pepper" />
