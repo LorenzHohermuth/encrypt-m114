@@ -1,13 +1,8 @@
 package ch.bbw.encryptm114;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
 import java.util.Random;
 
 public class Controller {
@@ -53,14 +48,6 @@ public class Controller {
         }
         outText.setText(message); //setzt de text uf äm label mit id outText uf t message
         setStateDecrypt();
-    }
-    public void start(Stage stage) {
-        StackPane root = new StackPane();
-        // set icon
-        stage.getIcons().add(new Image("@images/chatting.png"));
-        stage.setTitle("Wow!! Stackoverflow Icon");
-        stage.setScene(new Scene(root, 300, 250));
-        stage.show();
     }
 
     @FXML
@@ -157,7 +144,7 @@ public class Controller {
         String[] byteArr = splitInPairsOf(binText, 8);
         for (String byteText: byteArr ) {
             int charCode = Integer.parseInt(byteText, 2);
-            String str = new Character((char)charCode).toString();
+            String str = Character.toString((char) charCode);
             out += str;
         }
         return out;
