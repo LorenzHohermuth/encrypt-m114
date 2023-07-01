@@ -1,1 +1,0 @@
-mvn package && mvn package assembly:single && java -jar .\target\encrypt-m114-1.0-jar-with-dependencies.jar
