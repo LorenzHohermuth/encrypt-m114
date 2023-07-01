@@ -11,9 +11,4 @@ More Information about Module [114](https://www.modulbaukasten.ch/module/114/4/d
 👷‍♂️ Team: Petr and Lorenz
 
 ## ⚡ Get started
-run the `run.bat` file 
-
-or
-
-After you cloned the Project down, see if you have the right SDK and reload Maven.
-Then start the Main.
+Start it with the .jar in out/artifacts
